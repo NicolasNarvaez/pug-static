@@ -39,7 +39,7 @@
     "url": "http://github.com/ryan-schroeder/pug-static.git"
   },
   "dependencies": {
-    "pug": "*"
+    "pug": "^2.0.0-beta4"
   },
   "engines": {
     "node": ">=4.4"
