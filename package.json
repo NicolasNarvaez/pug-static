@@ -1,6 +1,6 @@
 {
   "name": "pug-static",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "test": "mocha && istanbul report text-summary lcov",
     "pretest": "coffee --bare --output ./lib --compile ./src/*.coffee",
