@@ -1,11 +1,11 @@
 path = require 'path'
 fs = require 'fs'
-jade = require 'jade'
+pug = require 'pug'
 
 
 readAndSendTemplate = (d, res, next) ->
 
-    # Read the jade file.
+    # Read the pug file.
     fs.readFile d, 'utf8', (err, data) ->
 
         # Anything screws up, then move on.
@@ -13,7 +13,7 @@ readAndSendTemplate = (d, res, next) ->
             return next()
 
         try
-            template = jade.compile data, filename: d
+            template = pug.compile data, filename: d
             html = template {}
             res.send html, 'Content-Type': 'text/html', 200
         catch err
@@ -25,7 +25,7 @@ checkFileAndProcess = (d, res, next) ->
     # Check if file is exists
     fs.lstat d, (err, stats) ->
 
-        # If it exists, then we got ourselves a jade file.
+        # If it exists, then we got ourselves a pug file.
         if not err? and stats.isFile()
             readAndSendTemplate d, res, next
         else
@@ -54,16 +54,16 @@ module.exports = (options) ->
             # is it a directory?
             if not err? and stats.isDirectory()
 
-                # If so, check if there is exists a file called index.jade.
-                checkFileAndProcess "#{d}/index.jade", res, next
+                # If so, check if there is exists a file called index.pug.
+                checkFileAndProcess "#{d}/index.pug", res, next
 
-            else if not err? and stats.isFile() and path.extname(d) is '.jade'
+            else if not err? and stats.isFile() and path.extname(d) is '.pug'
                 readAndSendTemplate d, res, next
                 
-            # try to replace html file by jade template
+            # try to replace html file by pug template
             else if options.html? and path.extname(d) is '.html'
 
                 # check template exists
-                checkFileAndProcess d.replace(/html$/, 'jade'), res, next
+                checkFileAndProcess d.replace(/html$/, 'pug'), res, next
             else
                 next()

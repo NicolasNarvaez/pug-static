@@ -1,16 +1,16 @@
 {
-  "name": "jade-static",
-  "version": "1.1.2",
+  "name": "pug-static",
+  "version": "1.0.0",
   "scripts": {
     "test": "mocha && istanbul report text-summary lcov",
     "pretest": "coffee --bare --output ./lib --compile ./src/*.coffee",
     "cov": "cat coverage/lcov.info | coveralls"
   },
-  "description": "Serve static Jade files from an Express server.",
-  "homepage": "http://github.com/shovon/jade-static.git",
+  "description": "Serve static Pug files from an Express server.",
+  "homepage": "http://github.com/ryan-schroeder/pug-static.git",
   "keywords": [
     "express",
-    "jade",
+    "pug",
     "middleware"
   ],
   "author": {
@@ -27,23 +27,27 @@
     {
       "name": "Alex Gorbatchev",
       "url": "http://github.com/alexgorbatchev/"
+    },
+    {
+      "name": "Ryan Schroeder",
+      "url": "http://github.com/ryan-schroeder"
     }
   ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "http://github.com/shovon/jade-static.git"
+    "url": "http://github.com/ryan-schroeder/pug-static.git"
   },
   "dependencies": {
-    "jade": "*"
+    "pug": "*"
   },
   "engines": {
-    "node": ">=0.4.0"
+    "node": ">=4.4"
   },
   "directories": {
     "lib": "lib"
   },
-  "main": "./lib/jade-static.js",
+  "main": "./lib/pug-static.js",
   "devDependencies": {
     "chai": "^1.10.0",
     "coffee-coverage": "^0.7.0",

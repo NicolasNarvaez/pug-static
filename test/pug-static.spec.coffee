@@ -1,24 +1,24 @@
 express = require 'express'
 supertest = require 'supertest'
-jadeStatic = require '../src/jade-static'
+pugStatic = require '../src/pug-static'
 
-describe 'jade-static', ->
+describe 'pug-static', ->
   request = null
 
   before ->
     app = express()
-    app.use '/mount', jadeStatic "#{__dirname}/public"
+    app.use '/mount', pugStatic "#{__dirname}/public"
     request = supertest app
 
-  it 'serves index.jade from folder', (done) ->
+  it 'serves index.pug from folder', (done) ->
     request
       .get '/mount'
       .expect 200
       .expect '<div class="hello">World!</div>', done
 
-  it 'serves index.jade', (done) ->
+  it 'serves index.pug', (done) ->
     request
-      .get '/mount/index.jade'
+      .get '/mount/index.pug'
       .expect 200
       .expect '<div class="hello">World!</div>', done
 
@@ -30,5 +30,5 @@ describe 'jade-static', ->
 
   it 'handles 404s', (done) ->
     request
-      .get '/mount/missing-file.jade'
+      .get '/mount/missing-file.pug'
       .expect 404, done
